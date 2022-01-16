@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve ray
+After=network.target
+
+[Service]
+User=harsh
+Group=www-data
+WorkingDirectory=/home/harsh/www/ray
+Environment="PATH=/home/harsh/www/ray/venv/bin"
+ExecStart=/home/harsh/www/ray/venv/bin/uwsgi --ini wsgi.ini
+
+[Install]
+WantedBy=multi-user.target

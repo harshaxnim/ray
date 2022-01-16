@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    server_name ray.inspirho.in;
+
+    location /js/ {
+        root /home/harsh/www/ray/content/;
+    }
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/home/harsh/www/ray/wsgi.sock;
+    }
+    
+    access_log /home/harsh/www/ray/logs/access.log;
+    error_log /home/harsh/www/ray/logs/error.log;
+
+}
